@@ -8,7 +8,7 @@ import (
 )
 
 func writeToFile2() {
-	f, err := os.Create("goFile2.txt")
+	f, err := os.Create("./files/goFile2.txt")
 	if err != nil {
 		fmt.Println(err)
 		return

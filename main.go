@@ -13,7 +13,7 @@ var mutex = &sync.Mutex{}
 func writeToFile(i int) {
 	defer wg.Done()
 	mutex.Lock()
-	f, err := os.OpenFile("goFile.txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+	f, err := os.OpenFile("./files/goFile.txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 	if err != nil {
 		fmt.Println(err)
 		return

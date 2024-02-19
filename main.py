@@ -1,7 +1,7 @@
 import time
 
 def write_to_file():
-    with open('pythonFile.txt', 'w') as f:
+    with open('./files/pythonFile.txt', 'w') as f:
         for i in range(90000):
             f.write(f'This is line {i}\n')
 

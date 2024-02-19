@@ -10,7 +10,7 @@ fn main() {
         .write(true)
         .create(true)
         .append(true)
-        .open("rustFile.txt")
+        .open("./files/rustFile.txt")
         .unwrap();
 
     let mut writer = BufWriter::new(file);

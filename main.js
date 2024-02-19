@@ -11,7 +11,7 @@ fs.createWriteStream method automatically buffers data.
 
 console.time('writeStream');
 
-const writeStream = fs.createWriteStream('nodeStreamFile.txt');
+const writeStream = fs.createWriteStream('./files/nodeStreamFile.txt');
 
 for(let i = 0; i < 90000; i++) {
     writeStream.write(`This is line ${i}\n`);
@@ -29,7 +29,7 @@ console.time('writeFile');
 let callbacksCalled = 0;
 
 for(let i = 0; i < 90000; i++) {
-    fs.writeFile('nodeFile.txt', `This is line ${i}\n`, { flag: 'a' }, (err) => {
+    fs.writeFile('./files/nodeFile.txt', `This is line ${i}\n`, { flag: 'a' }, (err) => {
         if (err) throw err;
         callbacksCalled++;
         if (callbacksCalled === 90000) {
