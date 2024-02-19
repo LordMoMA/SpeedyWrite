@@ -1,51 +1,32 @@
 #include <stdio.h>
-#include <pthread.h>
+#include <time.h>
 
-#define NUM_THREADS 1000
+#define NUM_LINES 90000
 
-pthread_mutex_t lock;
+int main() {
+    clock_t start, end;
+    double cpu_time_used;
 
-void* writeToFile(void* threadid) {
-    long tid;
-    tid = (long)threadid;
+    start = clock();
 
-    pthread_mutex_lock(&lock);
-
-    FILE *f = fopen("cFile.txt", "a");
+    FILE *f = fopen("cFile.txt", "w");
     if (f == NULL) {
         printf("Error opening file!\n");
-        return NULL;
+        return -1;
     }
 
-    fprintf(f, "This is line %ld\n", tid);
+    char buffer[20];
+    for(int i = 0; i < NUM_LINES; i++) {
+        sprintf(buffer, "This is line %d\n", i);
+        fputs(buffer, f);
+    }
 
     fclose(f);
 
-    pthread_mutex_unlock(&lock);
+    end = clock();
+    cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
 
-    pthread_exit(NULL);
-}
-
-int main() {
-    pthread_t threads[NUM_THREADS];
-    int rc;
-    long t;
-
-    pthread_mutex_init(&lock, NULL);
-
-    for(t = 0; t < NUM_THREADS; t++) {
-        rc = pthread_create(&threads[t], NULL, writeToFile, (void *)t);
-        if (rc) {
-            printf("ERROR; return code from pthread_create() is %d\n", rc);
-            return -1;
-        }
-    }
-
-    for(t = 0; t < NUM_THREADS; t++) {
-        pthread_join(threads[t], NULL);
-    }
-
-    pthread_mutex_destroy(&lock);
+    printf("Time taken: %f milliseconds\n", cpu_time_used * 1000);
 
     return 0;
 }
