@@ -11,7 +11,7 @@ fs.createWriteStream method automatically buffers data.
 
 console.time('writeStream');
 
-const writeStream = fs.createWriteStream('./files/nodeStreamFile.txt');
+const writeStream = fs.createWriteStream('./files/nodeStreamFile.txt', { highWaterMark: 174080 }); // the buffer size doesn't affect the time
 
 for(let i = 0; i < 90000; i++) {
     writeStream.write(`This is line ${i}\n`);
