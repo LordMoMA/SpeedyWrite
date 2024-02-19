@@ -44,6 +44,13 @@ bufio.NewWriter (which uses a default size of 4096 bytes as of Go 1.17) or bufio
 Time elapsed in function is: 6.700958ms
 ```
 
+## How to run the PHP file
+
+```bash
+➜  SpeedyWrite git:(main) ✗ php main.php
+Time taken for the PHP version: 116.61 milliseconds
+```
+
 ## How to run the C file
 
 ```bash
