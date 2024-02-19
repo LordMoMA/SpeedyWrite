@@ -1,30 +1,26 @@
 use std::fs::OpenOptions;
 use std::io::prelude::*;
-use std::sync::{Arc, Mutex};
-use std::thread;
+use std::io::BufWriter;
+use std::time::Instant;
 
 fn main() {
-    let file = Arc::new(Mutex::new(
-        OpenOptions::new()
-            .write(true)
-            .create(true)
-            .append(true)
-            .open("rustFile.txt")
-            .unwrap(),
-    ));
+    let start = Instant::now();
 
-    let mut handles = vec![];
+    let file = OpenOptions::new()
+        .write(true)
+        .create(true)
+        .append(true)
+        .open("rustFile.txt")
+        .unwrap();
 
-    for i in 0..1000 {
-        let file = Arc::clone(&file);
-        let handle = thread::spawn(move || {
-            let mut file = file.lock().unwrap();
-            writeln!(file, "This is line {}", i).unwrap();
-        });
-        handles.push(handle);
+    let mut writer = BufWriter::new(file);
+
+    let num_lines = 90000;
+
+    for i in 0..num_lines {
+        writeln!(writer, "This is line {}", i).unwrap();
     }
 
-    for handle in handles {
-        handle.join().unwrap();
-    }
+    let duration = start.elapsed();
+    println!("Time elapsed in function is: {:?}", duration);
 }

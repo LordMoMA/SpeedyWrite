@@ -1,5 +1,5 @@
 [package]
-name = "writeFile"
+name = "speedy_write"
 version = "0.1.0"
 edition = "2021"
 
@@ -8,5 +8,5 @@ edition = "2021"
 [dependencies]
 
 [[bin]]
-name = "writeFile"
+name = "speedy_write"
 path = "main.rs"
