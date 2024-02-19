@@ -30,6 +30,8 @@ Starting improved write...
 Time taken for the improved version: 7.690667ms
 ```
 
+bufio.NewWriter (which uses a default size of 4096 bytes as of Go 1.17) or bufio.NewWriterSize (which allows you to specify the size).
+
 ## How to run the Rust file
 
 ```bash
