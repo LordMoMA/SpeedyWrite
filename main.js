@@ -1,4 +1,5 @@
 const fs = require('fs');
+const util = require('util');
 
 /*
 The write method writes data to the stream's buffer, 
@@ -60,3 +61,4 @@ for(let i = 0; i < 90000; i++) {
 
 
 // use buffer instead
+
