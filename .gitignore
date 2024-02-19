@@ -1,1 +1,33 @@
+# Rust
 /target
+**/*.rs.bk
+
+# Cargo
+/Cargo.lock
+
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Go
+*.o
+*.a
+*.so
+/obj
+/_obj
+/_test
+/_output
+*.test
+*.prof
+
+# IDEs and editors
+/.idea
+*.swp
+*~
+*.sublime*
+.vscode/
+
+# OS specific
+.DS_Store
+Thumbs.db
