@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <time.h>
+#include <math.h>
 
 #define NUM_LINES 90000
 
@@ -15,7 +16,8 @@ int main() {
         return -1;
     }
 
-    char buffer[20];
+    int buffer_size = snprintf(NULL, 0, "This is line %d\n", NUM_LINES) + 1;
+    char buffer[buffer_size];
     for(int i = 0; i < NUM_LINES; i++) {
         sprintf(buffer, "This is line %d\n", i);
         fputs(buffer, f);

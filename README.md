@@ -45,7 +45,7 @@ Time elapsed in function is: 6.700958ms
 ```bash
 ➜  cFile git:(main) ✗ gcc main.c -o cFile
 ➜  cFile git:(main) ✗ ./cFile            
-Time taken: 20.605000 milliseconds
+Time taken: 18.044000 milliseconds
 ```
 
 The performance of a program can be influenced by many factors, including the efficiency of the code, the capabilities of the language, the performance of the compiler, and the specifics of the system it's running on.
