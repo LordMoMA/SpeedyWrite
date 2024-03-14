@@ -39,6 +39,21 @@ for(let i = 0; i < 90000; i++) {
     });
 }
 
+// writeFile 2nd example -- writing to the file once
+console.time('writeFile2');
+let lines = [];
+
+for(let i = 0; i < 90000; i++) {
+    lines.push(`This is line ${i}\n`);
+}
+
+let data = lines.join('');
+
+fs.writeFile('./files/nodeFile2.txt', data, (err) => {
+    if (err) throw err;
+    console.timeEnd('writeFile2');
+}); // writeFile2: 566.861ms
+
 // for 1000 lines writeStream is faster than writeFile
 // ➜  writeFile git:(master) ✗ node main.js
 // writeStream: 9.337ms
