@@ -14,3 +14,4 @@ def calc_write_time():
     print(f'Time taken for the python version: {elapsed * 1000} milliseconds')
 
 calc_write_time()
+

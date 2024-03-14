@@ -24,7 +24,7 @@ writeStream.on('finish', () => {
     console.timeEnd('writeStream');
 });
 
-// writeFile 
+// writeFile bad example -- writing to the file 90000 times
 console.time('writeFile');
 
 let callbacksCalled = 0;
